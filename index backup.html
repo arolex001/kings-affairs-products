@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover natural herbs, honey and wellness products at Kings Affairs Products.">
+<title>Kings Affairs Products | Natural Living, Elevated</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --forest: #183b2e;
+    --forest-dark: #10291f;
+    --sage: #a4ad91;
+    --gold: #c3a16a;
+    --cream: #f7f5ef;
+    --ivory: #fffefa;
+    --ink: #26342c;
+    --muted: #7c847b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    color: var(--ink);
+    background: var(--ivory);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.announcement {
+    background: var(--forest-dark);
+    color: #eee5d3;
+    text-align: center;
+    padding: 11px 15px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.header {
+    background: var(--ivory);
+    position: relative;
+    z-index: 5;
+}
+
+.header-top {
+    max-width: 1320px;
+    margin: auto;
+    min-height: 92px;
+    padding: 18px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.brand {
+    color: var(--forest);
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    display: block;
+    color: var(--gold);
+    font-family: "DM Sans", sans-serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    margin-top: 9px;
+    text-align: center;
+}
+
+.search {
+    max-width: 390px;
+    width: 100%;
+    border-bottom: 1px solid #d9d9ce;
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    width: 100%;
+    padding: 12px 5px;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font: inherit;
+    font-size: 12px;
+}
+
+.search button {
+    background: transparent;
+    border: 0;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--forest);
+}
+
+.header-actions {
+    display: flex;
+    gap: 23px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.header-actions a:hover {
+    color: var(--gold);
+}
+
+.navigation {
+    border-top: 1px solid #eeede6;
+    border-bottom: 1px solid #eeede6;
+}
+
+.navigation-inner {
+    max-width: 1320px;
+    margin: auto;
+    padding: 17px 35px;
+    display: flex;
+    justify-content: center;
+    gap: 42px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-weight: 600;
+}
+
+.navigation a:hover {
+    color: var(--gold);
+}
+
+.hero {
+    min-height: 590px;
+    background:
+        linear-gradient(90deg, rgba(13,37,27,.94) 0%, rgba(13,37,27,.78) 43%, rgba(13,37,27,.12) 100%),
+        url("https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=2000&q=85") center/cover;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.hero-inner {
+    max-width: 1320px;
+    width: 100%;
+    margin: auto;
+    padding: 90px 55px;
+}
+
+.hero-label {
+    color: #ddc28f;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 6vw, 78px);
+    font-weight: 400;
+    line-height: 1.1;
+    max-width: 680px;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    color: #e1e5dc;
+    font-size: 14px;
+    line-height: 2;
+    max-width: 470px;
+    margin-bottom: 36px;
+}
+
+.gold-button {
+    display: inline-block;
+    padding: 17px 32px;
+    background: var(--gold);
+    color: var(--forest-dark);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: .25s;
+}
+
+.gold-button:hover {
+    background: #dfc28f;
+    transform: translateY(-3px);
+}
+
+.section {
+    max-width: 1320px;
+    margin: auto;
+    padding: 95px 35px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-heading small {
+    color: var(--gold);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+.section-heading h2 {
+    font-family: "Playfair Display", serif;
+    color: var(--forest);
+    font-size: clamp(32px, 4vw, 45px);
+    font-weight: 400;
+    margin: 13px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+.category-card {
+    background: var(--cream);
+    text-align: center;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+}
+
+.category-image {
+    height: 205px;
+    overflow: hidden;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.category-card:hover img {
+    transform: scale(1.06);
+}
+
+.category-info {
+    padding: 22px 10px 25px;
+}
+
+.category-info h3 {
+    font-family: "Playfair Display", serif;
+    color: var(--forest);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.category-info span {
+    display: block;
+    color: var(--gold);
+    margin-top: 10px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.brand-story {
+    background: var(--forest);
+    color: white;
+}
+
+.story-inner {
+    max-width: 1320px;
+    margin: auto;
+    padding: 90px 35px;
+    text-align: center;
+}
+
+.story-inner small {
+    color: #d7bd8c;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.story-inner h2 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: clamp(34px, 5vw, 53px);
+    max-width: 780px;
+    margin: 20px auto;
+}
+
+.story-inner p {
+    color: #d3ddd4;
+    font-size: 13px;
+    line-height: 2;
+    max-width: 650px;
+    margin: auto;
+}
+
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    padding-top: 55px;
+}
+
+.benefit {
+    border-top: 1px solid rgba(255,255,255,.2);
+    padding-top: 25px;
+}
+
+.benefit h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 21px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.benefit p {
+    font-size: 12px;
+}
+
+.newsletter {
+    background: var(--cream);
+    text-align: center;
+    padding: 75px 20px;
+}
+
+.newsletter h2 {
+    font-family: "Playfair Display", serif;
+    color: var(--forest);
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.newsletter p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 12px 0 25px;
+}
+
+footer {
+    background: var(--forest-dark);
+    color: white;
+    padding: 65px 35px 25px;
+}
+
+.footer-inner {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 55px;
+}
+
+footer h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+footer h4 {
+    color: #d6b77d;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+footer p, footer a {
+    color: #c6d1c8;
+    font-size: 12px;
+    line-height: 2.2;
+}
+
+footer a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    max-width: 1250px;
+    margin: 45px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid #344b3e;
+    color: #a9b8ac;
+    font-size: 10px;
+}
+
+@media (max-width: 900px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .navigation-inner {
+        gap: 22px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 650px) {
+    .announcement {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .header-top {
+        padding: 20px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .brand {
+        font-size: 23px;
+    }
+
+    .search {
+        order: 3;
+        max-width: none;
+        flex-basis: 100%;
+    }
+
+    .header-actions {
+        gap: 13px;
+        font-size: 10px;
+    }
+
+    .navigation-inner {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 15px 20px;
+        font-size: 10px;
+    }
+
+    .hero {
+        min-height: 520px;
+        background-position: 60% center;
+    }
+
+    .hero-inner {
+        padding: 65px 25px;
+    }
+
+    .hero h1 {
+        font-size: 47px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .section {
+        padding: 65px 18px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .category-image {
+        height: 155px;
+    }
+
+    .category-info {
+        padding: 17px 7px 20px;
+    }
+
+    .category-info h3 {
+        font-size: 15px;
+    }
+
+    .story-inner {
+        padding: 70px 22px;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .newsletter h2 {
+        font-size: 29px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    footer {
+        padding: 50px 23px 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+    A MORE NATURAL WAY TO SHOP · KINGS AFFAIRS PRODUCTS
+</div>
+
+<header class="header">
+    <div class="header-top">
+        <a href="index.html" class="brand">
+            KINGS AFFAIRS
+            <span>PRODUCTS</span>
+        </a>
+
+        <form class="search" onsubmit="return false;">
+            <input type="search" id="home-search" placeholder="Search our collections...">
+            <button type="submit" aria-label="Search">⌕</button>
+        </form>
+
+        <div class="header-actions">
+            <a href="#">My Account</a>
+            <a href="#">Cart (0)</a>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <nav class="navigation-inner">
+            <a href="index.html">Home</a>
+            <a href="#categories">Shop All</a>
+            <a href="#categories">Collections</a>
+            <a href="#about">Our Story</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-label">Nature · Wellness · Everyday Living</div>
+        <h1>Nature's Goodness, Beautifully Discovered.</h1>
+        <p>
+            Explore the world of Kings Affairs Products.
+            Discover natural herbs, honey and carefully selected
+            wellness products for everyday living.
+        </p>
+        <a href="#categories" class="gold-button">Discover Our Collections</a>
+    </div>
+</section>
+
+<section class="section" id="categories">
+    <div class="section-heading">
+        <small>Explore the collection</small>
+        <h2>Shop by Category</h2>
+        <p>Find something special in every collection.</p>
+    </div>
+
+    <div class="category-grid">
+
+        <a href="shop.html?category=health" class="category-card">
+            <div class="category-image">
+                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=700&q=80" alt="Herbal products">
+            </div>
+            <div class="category-info">
+                <h3>Health & Wellness</h3>
+                <span>Explore collection</span>
+            </div>
+        </a>
+
+       <a href="shop.html?category=intimacy" class="category-card">
+            <div class="category-image">
+                <img src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=700&q=80" alt="Wellness and personal care products">
+            </div>
+            <div class="category-info">
+                <h3>Intimacy & Vitality</h3>
+                <span>Explore collection</span>
+            </div>
+        </a>
+
+       <a href="shop.html?category=beauty" class="category-card">
+            <div class="category-image">
+                <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80" alt="Beauty and grooming products">
+            </div>
+            <div class="category-info">
+                <h3>Beauty & Grooming</h3>
+                <span>Explore collection</span>
+            </div>
+        </a>
+
+       <a href="shop.html?category=pantry" class="category-card">
+            <div class="category-image">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80" alt="Natural pantry products">
+            </div>
+            <div class="category-info">
+                <h3>Nature's Pantry</h3>
+                <span>Explore collection</span>
+            </div>
+        </a>
+
+       <a href="shop.html?category=honey" class="category-card">
+            <div class="category-image">
+                <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=700&q=80" alt="Natural honey">
+            </div>
+            <div class="category-info">
+                <h3>Raw Honey</h3>
+                <span>Explore collection</span>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<section class="brand-story" id="about">
+    <div class="story-inner">
+        <small>The Kings Affairs experience</small>
+        <h2>A thoughtful approach to natural living.</h2>
+        <p>
+            Welcome to Kings Affairs Products, where you can discover
+            a diverse collection of natural herbs, honey and everyday
+            wellness products. Explore our range and enjoy a more
+            convenient shopping experience.
+        </p>
+
+        <div class="benefits">
+            <div class="benefit">
+                <h3>Discover Nature</h3>
+                <p>Explore our diverse natural product collections.</p>
+            </div>
+
+            <div class="benefit">
+                <h3>Shop With Ease</h3>
+                <p>A simple and convenient way to browse our store.</p>
+            </div>
+
+            <div class="benefit">
+                <h3>Customer Care</h3>
+                <p>We aim to make every shopping experience welcoming.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <h2>Stay Connected With Us</h2>
+    <p>Discover new arrivals and updates from Kings Affairs Products.</p>
+    <a href="#contact" class="gold-button">Get In Touch</a>
+</section>
+
+</main>
+
+<footer id="contact">
+    <div class="footer-inner">
+        <div>
+            <h3>Kings Affairs Products</h3>
+            <p>
+                Discover natural herbs, honey and wellness products.
+                Explore our collections and find something for your
+                everyday lifestyle.
+            </p>
+        </div>
+
+        <div>
+            <h4>Explore</h4>
+            <p><a href="index.html">Home</a></p>
+            <p><a href="shop.html">Shop All</a></p>
+            <p><a href="#about">Our Story</a></p>
+        </div>
+
+        <div>
+            <h4>Customer Service</h4>
+            <p><a href="#contact">Contact Us</a></p>
+            <p><a href="#">Delivery Information</a></p>
+            <p><a href="#">My Account</a></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Kings Affairs Products. All rights reserved.
+    </div>
+</footer>
+
+<script>
+document.querySelector(".search").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const searchInput = document.getElementById("home-search");
+    const searchTerm = searchInput.value.trim();
+
+    if (!searchTerm) {
+        searchInput.focus();
+        return;
+    }
+
+    window.location.href = "shop.html?search=" + encodeURIComponent(searchTerm);
+});
+</script>
+</body>
+</html>

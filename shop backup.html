@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Kings Affairs Products</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #173c2c;
+      --green-dark: #102c20;
+      --gold: #bd9856;
+      --cream: #f8f6f0;
+      --text: #292d28;
+      --muted: #777d74;
+      --white: #fff;
+      --border: #e9e6dd;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+
+    .announcement {
+      background: var(--green-dark);
+      color: #fff;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-main {
+      max-width: 1250px;
+      margin: auto;
+      min-height: 88px;
+      padding: 15px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      font-family: "Playfair Display", serif;
+      color: var(--green);
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .brand span {
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 3px;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+    }
+
+    .cart-button {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 30px;
+      padding: 11px 16px;
+      cursor: pointer;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .cart-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold);
+      color: white;
+      border-radius: 50%;
+      width: 21px;
+      height: 21px;
+      margin-left: 5px;
+      font-size: 11px;
+    }
+
+    .shop-hero {
+      background: var(--cream);
+      text-align: center;
+      padding: 76px 20px 68px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+    }
+
+    .shop-hero h1 {
+      color: var(--green);
+      font-size: clamp(38px, 5vw, 58px);
+      margin-bottom: 15px;
+    }
+
+    .shop-hero p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 570px;
+      margin: auto;
+    }
+
+    .shop-layout {
+      max-width: 1250px;
+      margin: 55px auto 90px;
+      padding: 0 25px;
+    }
+
+    .shop-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .shop-toolbar h2 {
+      color: var(--green);
+      font-size: 29px;
+    }
+
+    .search-box {
+      width: min(100%, 330px);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 13px 18px;
+      outline: none;
+      background: #fff;
+      font-size: 13px;
+    }
+
+    .search-box:focus { border-color: var(--gold); }
+
+    .category-filters {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 4px 0 18px;
+      margin-bottom: 25px;
+    }
+
+    .filter-button {
+      flex: 0 0 auto;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--muted);
+      padding: 11px 17px;
+      border-radius: 30px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+
+    .results-line {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      border: 1px solid var(--border);
+      background: white;
+      transition: .25s;
+      min-width: 0;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px #173c2c12;
+    }
+
+    .product-art {
+      height: 205px;
+      background: linear-gradient(145deg, #edf0e7, #f7f4e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-art::before,
+    .product-art::after {
+      content: "";
+      position: absolute;
+      border: 1px solid #bd985633;
+      border-radius: 50%;
+      width: 170px;
+      height: 170px;
+    }
+
+    .product-art::after {
+      width: 125px;
+      height: 125px;
+    }
+
+    .product-symbol {
+      font-size: 55px;
+      z-index: 1;
+    }
+
+    .product-category {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      background: #ffffffdf;
+      color: var(--green);
+      font-size: 9px;
+      letter-spacing: .5px;
+      padding: 7px 9px;
+      text-transform: uppercase;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .product-info { padding: 18px 17px 17px; }
+
+    .product-info h3 {
+      color: var(--green);
+      font-size: 17px;
+      line-height: 1.4;
+      min-height: 48px;
+      margin-bottom: 9px;
+    }
+
+    .product-price {
+      color: var(--gold);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .add-button {
+      width: 100%;
+      border: 1px solid var(--green);
+      background: var(--green);
+      color: white;
+      padding: 12px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+
+    .add-button:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .empty-message {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--muted);
+      padding: 60px 15px;
+      border: 1px dashed var(--border);
+    }
+
+    footer {
+      background: var(--green-dark);
+      color: #fff;
+      padding: 55px 25px 25px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    footer h3 {
+      font-size: 23px;
+      margin-bottom: 14px;
+    }
+
+    footer p, footer a {
+      color: #d0d8d0;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    footer h4 {
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .copyright {
+      max-width: 1200px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #ffffff25;
+      color: #c4cec5;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #0008;
+      z-index: 50;
+    }
+
+    .cart-overlay.open { display: block; }
+
+    .cart-panel {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: min(420px, 100%);
+      background: white;
+      padding: 25px;
+      overflow-y: auto;
+    }
+
+    .cart-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 18px;
+    }
+
+    .cart-heading h2 {
+      color: var(--green);
+      font-size: 25px;
+    }
+
+    .close-cart {
+      border: 0;
+      background: none;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .cart-item strong { color: var(--green); }
+
+    .remove-item {
+      display: block;
+      border: 0;
+      background: none;
+      color: #a34a3c;
+      font-size: 11px;
+      cursor: pointer;
+      margin-top: 7px;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      color: var(--green);
+      padding: 22px 0;
+    }
+
+    .cart-note {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 950px) {
+      nav { gap: 13px; }
+      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 700px) {
+      .header-main {
+        flex-wrap: wrap;
+        padding: 15px 18px;
+        gap: 15px;
+      }
+
+      nav {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding: 8px 0;
+      }
+
+      nav a { flex: 0 0 auto; }
+      .brand { font-size: 21px; }
+      .header-actions { margin-left: auto; }
+      .shop-hero { padding: 55px 18px; }
+      .shop-layout { padding: 0 16px; margin-top: 38px; }
+      .shop-toolbar { align-items: flex-start; flex-direction: column; }
+      .search-box { width: 100%; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .product-art { height: 155px; }
+      .product-symbol { font-size: 43px; }
+      .product-info { padding: 13px 11px; }
+      .product-info h3 { font-size: 14px; min-height: 58px; }
+      .product-price { font-size: 15px; }
+      .add-button { padding: 11px 5px; font-size: 10px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-inner > div:first-child { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 360px) {
+      .product-grid { grid-template-columns: 1fr 1fr; }
+      .product-art { height: 130px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    DISCOVER NATURAL LIVING · QUALITY PRODUCTS · PERSONAL SERVICE
+  </div>
+
+  <header>
+    <div class="header-main">
+      <a class="brand" href="index.html">
+        KINGS AFFAIRS
+        <span>PRODUCTS</span>
+      </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop All</a>
+        <a href="index.html#categories">Collections</a>
+        <a href="index.html#about">Our Story</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-button" onclick="openCart()">
+          My Cart <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="shop-hero">
+    <div class="eyebrow">The Kings Affairs Collection</div>
+    <h1>Shop Our Products</h1>
+    <p>
+      Explore our collections of wellness, beauty, natural pantry products
+      and raw honey.
+    </p>
+  </section>
+
+  <main class="shop-layout">
+    <div class="shop-toolbar">
+      <h2>Our Collection</h2>
+      <input
+        class="search-box"
+        type="search"
+        id="searchInput"
+        placeholder="Search products..."
+        aria-label="Search products"
+      >
+    </div>
+
+    <div class="category-filters" id="categoryFilters">
+      <button class="filter-button active" data-category="all">All Products</button>
+      <button class="filter-button" data-category="health">Health & Wellness</button>
+      <button class="filter-button" data-category="intimacy">Intimacy & Vitality</button>
+      <button class="filter-button" data-category="beauty">Beauty & Grooming</button>
+      <button class="filter-button" data-category="pantry">Nature's Pantry</button>
+      <button class="filter-button" data-category="honey">Raw Honey</button>
+    </div>
+
+    <p class="results-line" id="resultsLine">Loading products...</p>
+    <div class="product-grid" id="productGrid"></div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h3>Kings Affairs Products</h3>
+        <p>
+          Discover our collections of natural pantry products, beauty
+          essentials, honey and wellness products.
+        </p>
+      </div>
+
+      <div>
+        <h4>EXPLORE</h4>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="shop.html">Shop All</a></p>
+        <p><a href="index.html#about">Our Story</a></p>
+      </div>
+
+      <div>
+        <h4>HELP</h4>
+        <p><a href="index.html#contact">Contact Us</a></p>
+        <p><a href="https://kingsaffairsproducts.com/">Original Website</a></p>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © <span id="year"></span> Kings Affairs Products. All rights reserved.
+    </div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCartFromOutside(event)">
+    <div class="cart-panel">
+      <div class="cart-heading">
+        <h2>Your Cart</h2>
+        <button class="close-cart" onclick="closeCart()" aria-label="Close cart">&times;</button>
+      </div>
+
+      <div id="cartItems"></div>
+
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">₦0</span>
+      </div>
+
+      <p class="cart-note">
+        This is a local cart preview only. Online checkout and payment
+        will be connected in a later stage.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Product information transcribed from the visible original collection listings.
+    // Confirm prices with the business owner before publishing.
+
+    const products = [
+      // HEALTH & WELLNESS
+      { name: "2 Sets of Infection Flush Herbal Kit", price: 100000, category: "health", icon: "🌿", image: "images/infection-flush-kit.jpg" },
+      { name: "5 Days Detoxification Tea", price: 23000, category: "health", icon: "🍵", image: "images/detoxification-tea.jpg" },
+      { name: "6PCS of Raw Undiluted Honey Combo", price: 60000, category: "health", icon: "🍯", image: "images/raw-honey-combo.png" },
+      { name: "Arthritis Relief Set", price: 60000, category: "health", icon: "🌱", image: "images/arthritis-relief-set.jpg" },
+      { name: "CCQES – Complete Erectile Dysfunction Treatment Set", price: 105000, category: "health", icon: "🌿", image: "images/ccqes-treatment-set.jpg" },
+      { name: "Clean Body Reload", price: 70000, category: "health", icon: "🌱", image: "images/clean-body-reload.jpg" },
+      { name: "Complete Erectile Dysfunction Package + High Blood Pressure Kit", price: 185000, category: "health", icon: "🌿", image: "images/complete-ed-bp-package.jpg" },
+      { name: "Complete Penis Repair Package", price: 353000, category: "health", icon: "🌿", image: "images/complete-penis-repair.jpg" },
+      { name: "Complete Ulcer / H. Pylori / Gastritis Kit", price: 105000, category: "health", icon: "🌱", image: "images/ulcer-gastritis-kit.jpg" },
+      { name: "Diabetes Support Pack", price: 100000, category: "health", icon: "🌿", image: "images/diabetes-support-pack.jpg" },
+      { name: "EMB + High Blood Pressure Tea", price: 50000, category: "health", icon: "🍵", image: "images/emb-blood-pressure-tea.jpeg" },
+      { name: "Female Fertility Support and Libido Booster", price: 83000, category: "health", icon: "🌸", image: "images/female-fertility-support.jpeg" },
+
+      // INTIMACY & VITALITY
+      { name: "Couple's Drip & Faya Combo", price: 62000, category: "intimacy", icon: "🌺", image: "images/couples drip & faya.jpg" },
+      { name: "Emergency Men Booster", price: 25000, category: "intimacy", icon: "🌿", image: "images/emergency men booster.jpeg" },
+      { name: "Enlargement Kit", price: 148500, category: "intimacy", icon: "🌱", image: "images/enlargment kit.jpg" },
+      { name: "Enlargement Oil (2pcs)", price: 37000, category: "intimacy", icon: "🧴", image: "images/enlargment oil 2pcs.jpg" },
+      { name: "Enlargement Oil & Enlargement Powder Combo", price: 70500, category: "intimacy", icon: "🌿", image: "images/enlargment oil & powder.jpg" },
+      { name: "Gbola Care Set", price: 170000, category: "intimacy", icon: "🌺", image: "images/gbola care set.jpg" },
+      { name: "I Am In Charge Set", price: 128000, category: "intimacy", icon: "🌿", image: "images/i-amin-charge.jpg" },
+      { name: "Kerewawa Couples Combo", price: 42000, category: "intimacy", icon: "🌺", image: "images/kerewa couple.jpg" },
+      { name: "Libido Booster", price: 20000, category: "intimacy", icon: "🌿", image: "images/libido booster.jpeg" },
+      { name: "Male Vitality Set", price: 107000, category: "intimacy", icon: "🌱", image: "images/male vitality set.jpg" },
+      { name: "Man Power Herbal Drink", price: 45000, category: "intimacy", icon: "🍵", image: "images/man power herbal.jpg" },
+
+      // BEAUTY & GROOMING
+      { name: "Beard Oil", price: 17000, category: "beauty", icon: "🧴", image: "images/beard oil.jpg" },
+      { name: "Beard Trimmers", price: 18000, category: "beauty", icon: "✂️", image: "images/trimmers.jpg" },
+      { name: "Beginners Beard Oil & Beard Balm", price: 27000, category: "beauty", icon: "🧴", image: "images/beginners beard oil& balm.jpg" },
+      { name: "Beginners Beard Package", price: 43000, category: "beauty", icon: "🌿", image: "images/beginners beard package.jpg" },
+      { name: "Bumps Solution Kit", price: 20000, category: "beauty", icon: "🧴", image: "images/bumps solution kit.jpg" },
+      { name: "Charcoal Teeth Whitener", price: 17000, category: "beauty", icon: "✨", image: "images/charcoal teeth.jpg" },
+      { name: "Clean Body Reload", price: 70000, category: "beauty", icon: "🌱", image: "images/clean-body-reload.jpg" },
+      { name: "Complete Beard Package", price: 60000, category: "beauty", icon: "🧔", image: "images/complete beard package.jpg" },
+      { name: "Derma Roller", price: 16000, category: "beauty", icon: "✨", image: "images/derma roller.jpg" },
+      { name: "Facial Cleanser", price: 4000, category: "beauty", icon: "🧴", image: "images/facial cleanser.jpg" },
+      { name: "Sweet Men Combo", price: 43000, category: "beauty", icon: "🌿", image: "images/sweetmen combo.jpg" },
+      { name: "Tongue Scraper", price: 2000, category: "beauty", icon: "✨", image: "images/tongue scraper.jpg" },
+
+      // NATURE'S PANTRY
+      { name: "Almond Seeds (150g)", price: 8000, category: "pantry", icon: "🥜", image: "images/almond seed.jpeg" },
+     { name: "Bay Leaves (50g)", price: 5000, category: "pantry", icon: "🍃", image: "images/bay leaves.jpeg" },
+     { name: "Black Seeds (200g)", price: 8000, category: "pantry", icon: "🌱", image: "images/black seed.jpeg" },
+      { name: "Black Sesame Seeds (1kg)", price: 25000, category: "pantry", icon: "🌾", image: "images/black sesame seeds.jpeg" },
+      { name: "Cashew Nuts (200g)", price: 7000, category: "pantry", icon: "🥜", image: "images/cashew nuts.jpeg" },
+      { name: "Cassia Cinnamon (100g)", price: 5000, category: "pantry", icon: "🌿", image: "images/cassia cinnamon.jpeg" },
+      { name: "Ceylon Cinnamon (100g)", price: 5000, category: "pantry", icon: "🌿", image: "images/ceylon cinnamon.png" },
+      { name: "Chia Seed (200g)", price: 7000, category: "pantry", icon: "🌱", image: "images/chia seed.png" },
+      { name: "Coconut Oil", price: 50000, category: "pantry", icon: "🥥", image: "images/coconut oil.jpeg" },
+      { name: "Fenugreek Seed (200g)", price: 7000, category: "pantry", icon: "🌾", image: "images/fenugreek seed.jpeg" },
+      { name: "Flax Seed (200g)", price: 7500, category: "pantry", icon: "🌱", image: "images/flax seed.jpeg" },
+      { name: "Hibiscus Flower (100g)", price: 5000, category: "pantry", icon: "🌺", image: "images/hibiscus flower.jpeg" },
+
+      // RAW HONEY
+      { name: "Pure Honey (10 litres)", price: 7000, category: "honey", icon: "🍯", image: "images/pure honey 10ltrs.png" },
+      { name: "Pure Honey (10pcs of 20 litres)", price: 1300000, category: "honey", icon: "🍯", image: "images/pure honey 10pcs of 20liters.png" },
+      { name: "Pure Honey (20 litres)", price: 250000, category: "honey", icon: "🍯", image: "images/pure honey 20ltrs.png" },
+      { name: "Pure Honey (3 pcs)", price: 25000, category: "honey", icon: "🍯", image: "images/pure honey 3 pcs.png" },
+      { name: "Pure Honey (5 litres)", price: 35000, category: "honey", icon: "🍯", image: "images/pure honey 5ltrs.png" },
+      { name: "Pure Honey (6 pcs)", price: 48000, category: "honey", icon: "🍯", image: "images/pure honey 6pcs.png" },
+    ];
+
+    const categoryNames = {
+      health: "Health & Wellness",
+      intimacy: "Intimacy & Vitality",
+      beauty: "Beauty & Grooming",
+      pantry: "Nature's Pantry",
+      honey: "Raw Honey"
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+const requestedCategory = urlParams.get("category");
+
+const validCategories = ["health", "intimacy", "beauty", "pantry", "honey"];
+
+let activeCategory = validCategories.includes(requestedCategory)
+  ? requestedCategory
+  : "all";
+    let cart = JSON.parse(localStorage.getItem("kingsAffairsCart") || "[]");
+
+    const productGrid = document.getElementById("productGrid");
+    const searchInput = document.getElementById("searchInput");
+    const homepageSearch = new URLSearchParams(window.location.search).get("search");
+
+if (homepageSearch) {
+  searchInput.value = homepageSearch;
+}
+
+    function formatPrice(amount) {
+      return "₦" + amount.toLocaleString("en-NG");
+    }
+
+    function renderProducts() {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+
+      const filtered = products.filter(product => {
+        const matchesCategory =
+          activeCategory === "all" || product.category === activeCategory;
+
+        const matchesSearch =
+          product.name.toLowerCase().includes(searchTerm);
+
+        return matchesCategory && matchesSearch;
+      });
+
+      document.getElementById("resultsLine").textContent =
+        `Showing ${filtered.length} products`;
+
+      if (filtered.length === 0) {
+        productGrid.innerHTML =
+          '<div class="empty-message">No products found. Try another search.</div>';
+        return;
+      }
+
+      productGrid.innerHTML = filtered.map(product => {
+        const productIndex = products.indexOf(product);
+
+        return `
+          <article class="product-card">
+            <div class="product-art">
+  <span class="product-category">${categoryNames[product.category]}</span>
+  ${
+    product.image
+      ? `<img src="${product.image}" alt="${product.name}" style="width:100%;height:100%;object-fit:contain;padding:18px;position:relative;z-index:1;">`
+      : `<span class="product-symbol">${product.icon}</span>`
+  }
+</div>
+            <div class="product-info">
+              <h3>${product.name}</h3>
+              <div class="product-price">${formatPrice(product.price)}</div>
+              <button class="add-button" onclick="addToCart(${productIndex})">
+                Add to Cart
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    document.querySelectorAll(".filter-button").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter-button").forEach(item =>
+          item.classList.remove("active")
+        );
+
+        button.classList.add("active");
+        activeCategory = button.dataset.category;
+        renderProducts();
+      });
+    });
+document.querySelectorAll(".filter-button").forEach(button => {
+  button.classList.toggle("active", button.dataset.category === activeCategory);
+});
+
+    searchInput.addEventListener("input", renderProducts);
+
+    function saveCart() {
+      localStorage.setItem("kingsAffairsCart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function addToCart(index) {
+      const product = products[index];
+      const existing = cart.find(item => item.name === product.name);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({
+          name: product.name,
+          price: product.price,
+          quantity: 1
+        });
+      }
+
+      saveCart();
+      openCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      saveCart();
+    }
+
+    function renderCart() {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity, 0
+      );
+
+      document.getElementById("cartCount").textContent = totalItems;
+      document.getElementById("cartTotal").textContent = formatPrice(totalPrice);
+
+      const cartItems = document.getElementById("cartItems");
+
+      if (cart.length === 0) {
+        cartItems.innerHTML =
+          '<p style="padding:25px 0;color:#777;font-size:13px;">Your cart is empty.</p>';
+        return;
+      }
+
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <div>
+            <strong>${item.name}</strong>
+            <p style="color:#777;margin-top:6px;">
+              ${item.quantity} × ${formatPrice(item.price)}
+            </p>
+            <button class="remove-item" onclick="removeFromCart(${index})">
+              Remove
+            </button>
+          </div>
+          <strong>${formatPrice(item.price * item.quantity)}</strong>
+        </div>
+      `).join("");
+    }
+
+    function openCart() {
+      document.getElementById("cartOverlay").classList.add("open");
+      renderCart();
+    }
+
+    function closeCart() {
+      document.getElementById("cartOverlay").classList.remove("open");
+    }
+
+    function closeCartFromOutside(event) {
+      if (event.target.id === "cartOverlay") closeCart();
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>
